@@ -2,6 +2,7 @@ package dev.mikeburgess.euler.problems
 
 import dev.mikeburgess.euler.extensions.isEven
 import dev.mikeburgess.euler.extensions.isPalindrome
+import dev.mikeburgess.euler.math.lcm
 import dev.mikeburgess.euler.sequences.fibonacciSequence
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -84,5 +85,22 @@ class Problems00x {
             .maxOf { it }
 
         assertThat(result).isEqualTo(906609L)
+    }
+
+    /**
+     * Problem 5
+     *
+     * 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without
+     * any remainder.
+     *
+     * What is the smallest positive number that is evenly divisible by all of the numbers from
+     * 1 to 20?
+     */
+    @Test
+    fun `Problem 5`() {
+        val result = (1..20L)
+            .reduce { x, y -> lcm(x, y) }
+
+        assertThat(result).isEqualTo(232792560L)
     }
 }
