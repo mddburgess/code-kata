@@ -13,3 +13,5 @@ fun Long.isPalindrome(base: Long = 10L): Boolean {
 
     return this == reverse
 }
+
+fun Long.squared() = this * this
