@@ -1,6 +1,7 @@
 package dev.mikeburgess.euler.problems
 
 import dev.mikeburgess.euler.extensions.isEven
+import dev.mikeburgess.euler.extensions.isPalindrome
 import dev.mikeburgess.euler.sequences.fibonacciSequence
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -64,5 +65,24 @@ class Problems00x {
         }
 
         assertThat(factor).isEqualTo(6857L)
+    }
+
+    /**
+     * Problem 4
+     *
+     * A palindromic number reads the same both ways. The largest palindrome made from the product
+     * of two 2-digit numbers is 9009 = 91 × 99.
+     *
+     * Find the largest palindrome made from the product of two 3-digit numbers.
+     */
+    @Test
+    fun `Problem 4`() {
+        val result = (100..999L)
+            .associateWith { it..999L }
+            .flatMap { entry -> entry.value.map { entry.key * it } }
+            .filter { it.isPalindrome() }
+            .maxOf { it }
+
+        assertThat(result).isEqualTo(906609L)
     }
 }
