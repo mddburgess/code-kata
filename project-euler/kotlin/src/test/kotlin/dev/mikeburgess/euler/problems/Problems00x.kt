@@ -5,6 +5,7 @@ import dev.mikeburgess.euler.extensions.isPalindrome
 import dev.mikeburgess.euler.extensions.squared
 import dev.mikeburgess.euler.math.lcm
 import dev.mikeburgess.euler.sequences.fibonacciSequence
+import dev.mikeburgess.euler.sequences.primeSequence
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -129,5 +130,22 @@ class Problems00x {
         val result = squareOfSums - sumOfSquares
 
         assertThat(result).isEqualTo(25164150L)
+    }
+
+    /**
+     * Problem 7
+     *
+     * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime
+     * is 13.
+     *
+     * What is the 10,001st prime number?
+     */
+    @Test
+    fun `Problem 7`() {
+        val result = primeSequence()
+            .take(10001)
+            .last()
+
+        assertThat(result).isEqualTo(104743L)
     }
 }
