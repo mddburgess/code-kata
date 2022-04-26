@@ -1,8 +1,6 @@
 package dev.mikeburgess.euler.problems
 
-import dev.mikeburgess.euler.extensions.isEven
-import dev.mikeburgess.euler.extensions.isPalindrome
-import dev.mikeburgess.euler.extensions.squared
+import dev.mikeburgess.euler.extensions.*
 import dev.mikeburgess.euler.math.lcm
 import dev.mikeburgess.euler.sequences.fibonacciSequence
 import dev.mikeburgess.euler.sequences.primeSequence
@@ -190,5 +188,27 @@ class Problems00x {
             }
 
         assertThat(result).isEqualTo(23514624000L)
+    }
+
+    /**
+     * Problem 9
+     *
+     * A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+     *
+     * a^2 + b^2 = c^2
+     *
+     * For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
+     *
+     * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+     * Find the product abc.
+     */
+    @Test
+    fun `Problem 9`() {
+        val result = (1..332L)
+            .flatMap { a -> LongRange(a + 1, (1000 - a) / 2).map { b -> a to b to 1000 - a - b } }
+            .first { it.isPythagorean() }
+            .product()
+
+        assertThat(result).isEqualTo(31875000L)
     }
 }
