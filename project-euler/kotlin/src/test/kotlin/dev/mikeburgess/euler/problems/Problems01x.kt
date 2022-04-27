@@ -256,4 +256,19 @@ class Problems01x {
 
         assertThat(result).isEqualTo(837799L)
     }
+
+    /**
+     * Problem 15
+     *
+     * Starting in the top left corner of a 2×2 grid, and only being able to move to the right and
+     * down, there are exactly 6 routes to the bottom right corner.
+     *
+     * How many such routes are there through a 20×20 grid?
+     */
+    @Test
+    fun `Problem 15`() {
+        val result = (1..20L).fold(1L) { acc, i -> acc * (20L + i) / i }
+
+        assertThat(result).isEqualTo(137846528820L)
+    }
 }
