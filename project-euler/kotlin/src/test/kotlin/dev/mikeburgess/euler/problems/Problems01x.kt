@@ -2,6 +2,7 @@ package dev.mikeburgess.euler.problems
 
 import dev.mikeburgess.euler.Grid
 import dev.mikeburgess.euler.extensions.countDivisors
+import dev.mikeburgess.euler.extensions.sumDigits
 import dev.mikeburgess.euler.sequences.collatzLengthSequence
 import dev.mikeburgess.euler.sequences.primeSequence
 import dev.mikeburgess.euler.sequences.triangleNumbers
@@ -270,5 +271,19 @@ class Problems01x {
         val result = (1..20L).fold(1L) { acc, i -> acc * (20L + i) / i }
 
         assertThat(result).isEqualTo(137846528820L)
+    }
+
+    /**
+     * Problem 16
+     *
+     * 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+     *
+     * What is the sum of the digits of the number 2^1000?
+     */
+    @Test
+    fun `Problem 16`() {
+        val result = BigInteger.valueOf(2).pow(1000).sumDigits().toLong()
+
+        assertThat(result).isEqualTo(1366L)
     }
 }
