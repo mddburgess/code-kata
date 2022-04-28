@@ -2,7 +2,9 @@ package dev.mikeburgess.euler.problems
 
 import dev.mikeburgess.euler.Grid
 import dev.mikeburgess.euler.extensions.countDivisors
+import dev.mikeburgess.euler.extensions.countLetters
 import dev.mikeburgess.euler.extensions.sumDigits
+import dev.mikeburgess.euler.extensions.toWordString
 import dev.mikeburgess.euler.sequences.collatzLengthSequence
 import dev.mikeburgess.euler.sequences.primeSequence
 import dev.mikeburgess.euler.sequences.triangleNumbers
@@ -285,5 +287,28 @@ class Problems01x {
         val result = BigInteger.valueOf(2).pow(1000).sumDigits().toLong()
 
         assertThat(result).isEqualTo(1366L)
+    }
+
+    /**
+     * Problem 17
+     *
+     * If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are
+     * 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+     *
+     * If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how
+     * many letters would be used?
+     *
+     * **Note:** Do not count spaces or hyphens. For example, 342 (three hundred and forty-two)
+     * contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and"
+     * when writing out numbers is in compliance with British usage.
+     */
+    @Test
+    fun `Problem 17`() {
+        val result = (1..1000)
+            .map { it.toWordString() }
+            .sumOf { it.countLetters() }
+            .toLong()
+
+        assertThat(result).isEqualTo(21124L)
     }
 }
