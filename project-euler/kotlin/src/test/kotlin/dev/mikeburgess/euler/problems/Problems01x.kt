@@ -5,6 +5,8 @@ import dev.mikeburgess.euler.extensions.countDivisors
 import dev.mikeburgess.euler.extensions.countLetters
 import dev.mikeburgess.euler.extensions.sumDigits
 import dev.mikeburgess.euler.extensions.toWordString
+import dev.mikeburgess.euler.getResourceAsInts
+import dev.mikeburgess.euler.graphs.TriangleGraph
 import dev.mikeburgess.euler.sequences.collatzLengthSequence
 import dev.mikeburgess.euler.sequences.primeSequence
 import dev.mikeburgess.euler.sequences.triangleNumbers
@@ -310,5 +312,32 @@ class Problems01x {
             .toLong()
 
         assertThat(result).isEqualTo(21124L)
+    }
+
+
+    /**
+     * Problem 18
+     *
+     * By starting at the top of the triangle below and moving to adjacent numbers on the row below,
+     * the maximum total from top to bottom is 23.
+     * ```
+     *    3
+     *   7 4
+     *  2 4 6
+     * 8 5 9 3
+     * ```
+     * That is, 3 + 7 + 4 + 9 = 23.
+     *
+     * Find the maximum total from top to bottom of the triangle below.
+     *
+     * **Note:** As there are only 16384 routes, it is possible to solve this problem by trying
+     * every route. However, Problem 67, is the same challenge with a triangle containing one
+     * hundred rows; it cannot be solved by brute force, and requires a clever method!
+     */
+    @Test
+    fun `Problem 18`() {
+        val result = TriangleGraph(getResourceAsInts("Problem018.txt")).maxSum()
+
+        assertThat(result).isEqualTo(1074L)
     }
 }
