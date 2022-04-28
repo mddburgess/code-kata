@@ -1,5 +1,8 @@
 package dev.mikeburgess.euler.extensions
 
+val Int.properDivisors: List<Int>
+    get() = (1..this / 2).filter { this % it == 0 }
+
 fun Int.toWordString() = when {
     this > 1000 -> TODO("Not implemented for numbers over 1000")
     this == 1000 -> "one thousand"
