@@ -7,6 +7,7 @@ import dev.mikeburgess.euler.extensions.sumDigits
 import dev.mikeburgess.euler.extensions.wordScore
 import dev.mikeburgess.euler.getResourceAsLines
 import org.assertj.core.api.Assertions.assertThat
+import java.math.BigInteger
 import kotlin.test.Test
 
 class Problems02x {
@@ -144,5 +145,33 @@ class Problems02x {
         val result = value * 10 + digits[0]
 
         assertThat(result).isEqualTo(2783915460L)
+    }
+
+    /**
+     * Problem 25
+     *
+     * The Fibonacci sequence is defined by the recurrence relation:
+     *
+     * F(n) = F(n - 1) + F(n - 2), where F(1) = 1 and F(2) = 1.
+     *
+     * Hence the first 12 terms will be:
+     *
+     * 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
+     *
+     * The 12th term, F(12), is the first term to contain three digits.
+     *
+     * What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+     */
+    @Test
+    fun `Problem 25`() {
+        var index = 2L
+        var fibonacci = BigInteger.valueOf(1) to BigInteger.valueOf(1)
+        while (fibonacci.second < BigInteger.TEN.pow(999)) {
+            fibonacci = fibonacci.second to fibonacci.first + fibonacci.second
+            index++
+        }
+        val result = index
+
+        assertThat(result).isEqualTo(4782L)
     }
 }
