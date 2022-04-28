@@ -1,6 +1,9 @@
 package dev.mikeburgess.euler.extensions
 
-val Int.properDivisors: List<Int>
+fun Int.isAbundant() =
+    properDivisors.sum() > this
+
+val Int.properDivisors
     get() = (1..this / 2).filter { this % it == 0 }
 
 fun Int.toWordString() = when {
