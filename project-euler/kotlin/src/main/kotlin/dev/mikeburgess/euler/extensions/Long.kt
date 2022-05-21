@@ -36,4 +36,20 @@ fun Long.isPalindrome(base: Long = 10L): Boolean {
     return this == reverse
 }
 
+fun Long.reciprocalCycleLength(): Long {
+    val remainders = mutableMapOf<Long, Long>()
+    var i = 1L
+    var position = 1L
+
+    do {
+        remainders[i] = position++
+        i = (i % this) * 10
+    } while (i != 0L && remainders[i] == null)
+
+    return when (i) {
+        0L -> 0L
+        else -> position - remainders[i]!!
+    }
+}
+
 fun Long.squared() = this * this

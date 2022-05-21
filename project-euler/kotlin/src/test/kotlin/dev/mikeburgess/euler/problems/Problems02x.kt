@@ -1,10 +1,7 @@
 package dev.mikeburgess.euler.problems
 
-import dev.mikeburgess.euler.extensions.isAbundant
-import dev.mikeburgess.euler.extensions.properDivisors
+import dev.mikeburgess.euler.extensions.*
 import dev.mikeburgess.euler.math.factorial
-import dev.mikeburgess.euler.extensions.sumDigits
-import dev.mikeburgess.euler.extensions.wordScore
 import dev.mikeburgess.euler.getResourceAsLines
 import org.assertj.core.api.Assertions.assertThat
 import java.math.BigInteger
@@ -173,5 +170,35 @@ class Problems02x {
         val result = index
 
         assertThat(result).isEqualTo(4782L)
+    }
+
+    /**
+     * Problem 26
+     *
+     * A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions
+     * with denominators 2 to 10 are given:
+     *
+     * - 1/2  = 0.5
+     * - 1/3  = 0.(3)
+     * - 1/4  = 0.25
+     * - 1/5  = 0.2
+     * - 1/6  = 0.1(6)
+     * - 1/7  = 0.(142857)
+     * - 1/8  = 0.125
+     * - 1/9  = 0.(1)
+     * - 1/10 = 0.1
+     *
+     * Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7
+     * has a 6-digit recurring cycle.
+     *
+     * Find the value of d < 1000 for which 1/d contains the longest recurring cycle in its decimal
+     * fraction part.
+     */
+    @Test
+    fun `Problem 26`() {
+        val result = (1 until 1000L)
+            .maxByOrNull { it.reciprocalCycleLength() }!!
+
+        assertThat(result).isEqualTo(983L)
     }
 }
