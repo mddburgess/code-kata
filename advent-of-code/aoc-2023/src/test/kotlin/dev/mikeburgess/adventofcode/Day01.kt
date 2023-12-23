@@ -1,28 +1,27 @@
 package dev.mikeburgess.adventofcode
 
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class Day01 {
 
     @Test
     fun part1() {
-        val input = this.javaClass.classLoader.getResource("input/day01.txt")!!.readText()
-        println(input.lines().sumOf { getIntValue(it) })
+        val input = readInput(1)
+        val result = input.sumOf { getIntValue(it) }
+        assertEquals(56042, result)
     }
 
     fun getIntValue(str: String): Int {
         val strValue = str.replace(Regex("[a-z]"), "")
-        return if (strValue == "") {
-            0
-        } else {
-            (strValue[0] - '0') * 10 + (strValue[strValue.length - 1] - '0')
-        }
+        return (strValue[0] - '0') * 10 + (strValue[strValue.length - 1] - '0')
     }
 
     @Test
     fun part2() {
-        val input = this.javaClass.classLoader.getResource("input/day01.txt")!!.readText()
-        println(input.lines().sumOf { getAlphaValue(it) })
+        val input = readInput(1)
+        val result = input.sumOf { getAlphaValue(it) }
+        assertEquals(55358, result)
     }
 
     fun getAlphaValue(str: String): Int = getIntValue(str
