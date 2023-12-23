@@ -8,6 +8,7 @@ class Scratchcard(
     val id: Int
     val winningNumbers: Set<Int>
     val yourNumbers: Set<Int>
+    var count = 1
 
     init {
         val components = input.split(Regex("[:|]"))
@@ -22,12 +23,10 @@ class Scratchcard(
             .toSet()
     }
 
-    fun value(): Int {
-        val matches = yourNumbers.filter { winningNumbers.contains(it) }.size
-        return if (matches == 0) 0 else (2.0).pow(matches - 1).toInt()
-    }
+    fun matches() = yourNumbers.filter { winningNumbers.contains(it) }.size
 
-    override fun toString(): String {
-        return "$id: Winning ${winningNumbers} | Your ${yourNumbers} | Value ${value()}"
+    fun value(): Int {
+        val matches = matches()
+        return if (matches == 0) 0 else (2.0).pow(matches - 1).toInt()
     }
 }
