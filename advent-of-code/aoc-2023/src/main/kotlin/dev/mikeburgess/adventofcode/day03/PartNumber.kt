@@ -8,6 +8,4 @@ class PartNumber {
     fun append(digit: Char) {
         value = value * 10 + (digit - '0')
     }
-
-    override fun toString(): String = if (included) value.toString() else "X"
 }
