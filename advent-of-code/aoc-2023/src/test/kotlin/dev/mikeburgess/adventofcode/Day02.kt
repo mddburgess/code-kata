@@ -16,4 +16,12 @@ class Day02 {
             .sumOf { it.id }
         assertEquals(3099, result)
     }
+
+    @Test
+    fun part2() {
+        val input = readInput(2)
+        val result = input.map { Game(it) }
+            .sumOf { it.power() }
+        assertEquals(72970, result)
+    }
 }

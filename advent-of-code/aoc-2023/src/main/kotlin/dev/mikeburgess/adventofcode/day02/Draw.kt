@@ -2,7 +2,7 @@ package dev.mikeburgess.adventofcode.day02
 
 class Draw(input: String) {
 
-    private val balls: MutableMap<String, Int> = HashMap()
+    val balls: MutableMap<String, Int> = HashMap()
 
     init {
         input.split(", ")
@@ -12,7 +12,4 @@ class Draw(input: String) {
 
     fun isValidWith(count: Int, colour: String): Boolean =
         (balls[colour] ?: 0) <= count
-
-    override fun toString(): String =
-        balls.toString()
 }
